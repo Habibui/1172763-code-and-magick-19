@@ -181,39 +181,27 @@
 
   <script>
     var fireballSize = 22;
-    var downWindSpeed = 5;
-    var againstWindSpeed = 2;
+    var DOWN_WIND_SPEED = 5;
+    var AGAINST_WIND_SPEED = 2;
 
-    /*Объявите переменную getFireballSpeed, которая будет управлять скоростью фаербола в зависимости от направления ветра в игре.
-    Значением этой переменной должна быть функция c одним параметром — left (направление полёта фаербола), если параметр left — true,
-    то фаербол летит по ветру и функция возвращает скорость равную 5, иначе он летит против ветра со скоростью 2.*/
     var getFireballSpeed = function (left) {
-      return left ? downWindSpeed : againstWindSpeed;
+      return left ? DOWN_WIND_SPEED : AGAINST_WIND_SPEED;
     }
 
     var wizardSpeed = 3;
     var wizardWidth = 70;
+    var HEIGHT_MULTIPLYER = 1.337;
 
-
-    /*Задайте переменной getWizardHeight функцию, которая возвращает пропорциональную высоту мага, то есть высота мага — это пропорция 1.337 * ширина мага.*/
     var getWizardHeight = function () {
-      var wizardHeight = 1.337 * wizardWidth;
-      return wizardHeight;
+      return HEIGHT_MULTIPLYER * wizardWidth;
     }
 
-    /*Определите функцию getWizardX c одним параметром — width. Игра будет вызывать вашу функцию и передавать в неё этот параметр (который обозначает ширину
-    игровой области). Результат, возвращаемый вашей функцией, игра будет использовать, чтобы задать положение мага по горизонтали. Напишите функцию так,
-    чтобы центр фигурки мага находился посередине игрового поля.*/
     var getWizardX = function (width) {
-      return width / 2;
+      return (width - wizardWidth) / 2;
     }
 
-
-    /*Определите функцию getWizardY c одним параметром — height. Игра будет вызывать вашу функцию и передавать в неё этот параметр (который обозначает высоту
-    игровой области). Результат, возвращаемый вашей функцией, игра будет использовать, чтобы задать положение мага по вертикали. Напишите функцию так,
-    чтобы маг появлялся на высоте две трети игрового поля от земли.*/
     var getWizardY = function (height) {
-      return (height * 2) / 3;
+      return height / 3;
     }
   </script>
 
