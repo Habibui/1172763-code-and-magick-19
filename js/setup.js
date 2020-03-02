@@ -6,37 +6,23 @@ var COAT_COLORS = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161
 var EYES_COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
 var WIZARDS_AMOUNT = 4;
 
-function getRandomInt(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min)) + min;
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
 }
 
 var getRandomElement = function (array) {
-  var len = array.length;
-
-  if (len === 0) {
-    return undefined;
-  }
-
-  return array[getRandomInt(0, len)];
+  return array[getRandomInt(array.length)];
 };
 
 var getWizards = function (amount) {
   var wizards = [];
 
   for (var i = 0; i < amount; ++i) {
-    var name = getRandomElement(WIZARD_NAMES) + ' ' + getRandomElement(WIZARD_SURNAMES);
-    var coatColor = getRandomElement(COAT_COLORS);
-    var eyesColor = getRandomElement(EYES_COLORS);
-
-    var wizard = {
-      name: name,
-      coatColor: coatColor,
-      eyesColor: eyesColor
-    };
-
-    wizards.push(wizard);
+    wizards.push({
+      name: getRandomElement(WIZARD_NAMES) + ' ' + getRandomElement(WIZARD_SURNAMES),
+      coatColor: getRandomElement(COAT_COLORS),
+      eyesColor: getRandomElement(EYES_COLORS),
+    });
   }
 
   return wizards;
